@@ -13,4 +13,6 @@ public interface BoardMapper {
     List<Board> getList();
 
     Board getBoard(Long boardid);
+
+    void uploadBoard(Board board);
 }

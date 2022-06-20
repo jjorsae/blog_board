@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.example.blog_board.mapper.BoardMapper">
+    <!--조회-->
     <select id="boardCount" resultType="int">
         SELECT count(boardId) AS cnt FROM tbl_board;
     </select>
-
     <select id="getList" resultType="com.example.blog_board.domain.Board">
         SELECT
         *
@@ -16,4 +16,16 @@
         *
         FROM tbl_board where boardId=#{boardId};
     </select>
+    <!--입력(CREAT)-->
+    <insert id="uploadBoard" parameterType="com.example.blog_board.domain.Board">
+        INSERT INTO tbl_board(title,content,name)
+        VALUES
+        (#{title},#{content},#{name});
+    </insert>
+    <!--업데이트(UPDATE)-->
+    <update id="updateBoard" parameterType="com.example.blog_board.domain.Board">
+        UPDATE tbl_board
+        SET title=#{title}, content=#{content}
+        WHERE boardId=#{boardId};
+    </update>
 </mapper>
