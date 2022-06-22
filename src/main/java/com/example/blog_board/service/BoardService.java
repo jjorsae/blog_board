@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.List;
 
 @Service
@@ -21,7 +22,18 @@ public class BoardService {
 
     public Board getBoard(Long boardId){return boardMapper.getBoard(boardId);}
 
+    @Transactional
     public void uploadBoard(Board board){
         boardMapper.uploadBoard(board);
+    }
+
+    @Transactional
+    public void updateBoard(Board board){
+        boardMapper.updateBoard(board);
+    }
+
+    @Transactional
+    public void deleteBoard(long boardId){
+        boardMapper.deleteBoard(boardId);
     }
 }

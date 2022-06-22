@@ -28,4 +28,11 @@
         SET title=#{title}, content=#{content}
         WHERE boardId=#{boardId};
     </update>
+
+    <!--삭제(DELETE)-->
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE
+        FROM tbl_board
+        WHERE boardId=#{boardId};
+    </delete>
 </mapper>

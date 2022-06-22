@@ -6,9 +6,7 @@ import com.example.blog_board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/board/*")
@@ -48,6 +46,18 @@ public class BoardController {
     @PostMapping("/upload")
     public String uploadBoard(Board board){
         service.uploadBoard(board);
+        return "redirect:/board/main";
+    }
+
+    @PutMapping("/update")
+    public String updateBoard(@RequestParam Board board){
+        service.updateBoard(board);
+        return "redirect:/board/main";
+    }
+
+    @DeleteMapping
+    public String deleteBoard(Long boardId){
+        service.deleteBoard(boardId);
         return "redirect:/board/main";
     }
 }
